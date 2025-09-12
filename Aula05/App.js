@@ -1,30 +1,19 @@
-import {
-  View,
-  Image,
-  StyleSheet,
-  Button,
-} from "react-native";
-import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
+import { createStaticNavigation, NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomePageScreen from './screens/HomeScreen';
+import GalleryScreen from './screens/GalleryScreen';
+import ProfileScreen from './screens/ProfileScreen';
+
+const RootStack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Image source={require("./assets/logo.png")} style={styles.imagem} />
-      <Image
-        source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
-        style={{ width: 100, height: 100 }}
-      />
-      <FontAwesome name="home" size={80} color="blue" />
-      <MaterialCommunityIcons name="horse-variant-fast" size={80} color="green" />
-      <Button
-        title="Perfil"
-        onPress={() => alert("Botão Pressionado!")}
-      />
-    </View>
+    <NavigationContainer>
+      <RootStack.Navigator initialRouteName="Home">
+        <RootStack.Screen name="Home" component={HomePageScreen} options={{ title: 'Início', headerShown: false }} />
+        <RootStack.Screen name="Gallery" component={GalleryScreen} options={{ title: 'Galeria' }} />
+        <RootStack.Screen name="Profile" component={ProfileScreen} options={{ title: 'Perfil' }} />
+      </RootStack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  imagem: { width: 200, height: 200, resizeMode: "contain" },
-});
