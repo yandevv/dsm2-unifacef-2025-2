@@ -10,8 +10,7 @@ export default function SpacedIconsScreen() {
     <View style={styles.container}>
       <Feather name="home" size={64} color="#231c80" />
       <Feather name="camera" size={64} color="#231c80" />
-      <Feather name="heart" size={64} color="#231c80" />
-      <Feather name="user" size={64} color="#231c80" />
+      <Feather name="settings" size={64} color="#231c80" />
     </View>
   );
 }
